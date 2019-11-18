@@ -16,7 +16,7 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'frontend\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
@@ -42,11 +42,24 @@ return [
             'rules' => [
             ],
         ],
+        'authClientCollection' => [
+            'class' => 'yii\authclient\Collection',
+            'clients' => [
+                'vkontakte' => [
+                    'class' => 'yii\authclient\clients\VKontakte',
+                    'clientId' => '7213368',
+                    'clientSecret' => 'pJUgNVCXlpHVJOw2ROjJ',
+                ],
+            ],
+        ],
     ],
     'modules' => [
         'debug' => [
             'class' => 'yii\debug\Module',
             'allowedIPs' => ['*'],
+        ],
+        'user' => [
+            'class' => 'frontend\modules\user\Module',
         ],
     ],
     'params' => $params,
